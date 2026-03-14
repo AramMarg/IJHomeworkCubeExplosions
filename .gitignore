@@ -53,7 +53,8 @@ ExportedObj/
 *.pdb
 *.mdb
 *.opendb
-*.VC.db*.cs~  
+*.VC.db
+*.cs~  
 *.DS_Store
 
 

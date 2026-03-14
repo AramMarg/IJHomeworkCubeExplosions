@@ -9,5 +9,5 @@ public static class Utils
         => s_random.Next(minRandom, maxRandom);
 
     public static bool HaveShance(int minForShance = 50)
-        => ReturnRandomInt() > minForShance;
+        => ReturnRandomInt() < minForShance;
 }

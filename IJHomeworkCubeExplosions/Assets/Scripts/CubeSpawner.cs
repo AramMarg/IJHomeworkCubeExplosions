@@ -17,6 +17,8 @@ public class CubeSpawner : MonoBehaviour
             {
                 createdCubes[i] = Instantiate(cubeCollider, cubeCollider.transform.position, Quaternion.identity);
 
+                SetShance(createdCubes[i], cubeCollider.GetComponent<Cube>().CountOfShance);
+
                 PaintCube(createdCubes[i]);
 
                 DecreaseScale(createdCubes[i]);
@@ -27,7 +29,10 @@ public class CubeSpawner : MonoBehaviour
 
     private void PaintCube(Collider createdCube)
     {
-        createdCube.GetComponent<Renderer>().material.color = new Color(Random.value, Random.value, Random.value);
+        if (createdCube.TryGetComponent<Renderer>(out Renderer component))
+        {
+            component.material.color = new Color(Random.value, Random.value, Random.value);
+        }
     }
 
     private void DecreaseScale(Collider collider)
@@ -35,5 +40,10 @@ public class CubeSpawner : MonoBehaviour
         int desreaseScale = 2;
 
         collider.transform.localScale /= desreaseScale;
+    }
+
+    private void SetShance(Collider collider, int shance)
+    {
+        collider.GetComponent<Cube>().SetShance(shance);
     }
 }

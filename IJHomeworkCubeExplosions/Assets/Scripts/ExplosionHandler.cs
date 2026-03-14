@@ -50,6 +50,6 @@ public class ExplosionHandler : MonoBehaviour
             _exploder.RunExplode(cubesForExplosion, findedCube.transform.position);
         }
     
-        Destroy(findedCube);
+        Destroy(findedCube.gameObject);
     }
 }

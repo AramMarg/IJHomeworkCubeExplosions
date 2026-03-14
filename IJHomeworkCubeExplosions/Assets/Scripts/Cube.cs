@@ -6,13 +6,19 @@ public class Cube : MonoBehaviour
 {
     private readonly int _chanceReduction = 2;
 
-    private int _countOfShance = 100;
+    public int CountOfShance { get; private set; } = 100;
 
     public bool HaveChance()
     {
-        if ((_countOfShance /= _chanceReduction) > 0)
-            return Utils.HaveShance();
+        bool  isSeparated = Utils.HaveShance(CountOfShance);
 
-        return false;
+        CountOfShance /= _chanceReduction;
+
+        return isSeparated;
+    }
+
+    public void SetShance(int chance)
+    {
+        CountOfShance = chance;
     }
 }
